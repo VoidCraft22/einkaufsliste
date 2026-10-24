@@ -1,0 +1,25 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "lists": {
+      "$code": {
+        ".read": "$code.length >= 16",
+        ".write": "$code.length >= 16",
+        "items": {
+          "$id": {
+            ".validate": "newData.child('name').isString() && newData.child('name').val().length > 0 && newData.child('name').val().length <= 80",
+            "name": { ".validate": "newData.isString()" },
+            "qty": { ".validate": "newData.isString() && newData.val().length <= 20" },
+            "by": { ".validate": "newData.isString() && newData.val().length <= 20" },
+            "doneBy": { ".validate": "newData.isString() && newData.val().length <= 20" },
+            "done": { ".validate": "newData.isBoolean()" },
+            "createdAt": { ".validate": "newData.isNumber()" },
+            "doneAt": { ".validate": "newData.isNumber()" },
+            "$other": { ".validate": false }
+          }
+        }
+      }
+    }
+  }
+}

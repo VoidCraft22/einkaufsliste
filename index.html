@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Einkaufsliste</title>
+  <meta name="theme-color" content="#1f6f4a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Einkauf">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <div>
+      <h1>Einkaufsliste</h1>
+      <p class="status" id="status">Verbinde …</p>
+    </div>
+    <button class="icon-btn" id="shareBtn" aria-label="Link teilen" title="Link mit der Familie teilen">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M18 16a3 3 0 0 0-2.4 1.2l-6.7-3.4a3 3 0 0 0 0-1.6l6.7-3.4A3 3 0 1 0 15 7c0 .3 0 .5.1.8L8.4 11.2a3 3 0 1 0 0 1.6l6.7 3.4A3 3 0 1 0 18 16Z"/></svg>
+    </button>
+  </header>
+
+  <div class="banner" id="demoBanner" hidden>
+    Demo-Modus: Firebase ist noch nicht eingerichtet, die Liste liegt nur auf diesem Gerät. Siehe README.
+  </div>
+
+  <main>
+    <form id="addForm" class="add" autocomplete="off">
+      <input id="itemInput" type="text" placeholder="Was fehlt? z. B. Milch" maxlength="80" required enterkeyhint="done">
+      <input id="qtyInput" type="text" placeholder="Menge" maxlength="20" class="qty">
+      <button type="submit" class="add-btn" aria-label="Hinzufügen">+</button>
+    </form>
+
+    <ul class="list" id="openList"></ul>
+    <p class="empty" id="emptyMsg" hidden>Alles da. Nichts zu kaufen. 🎉</p>
+
+    <section class="done-section" id="doneSection" hidden>
+      <div class="done-head">
+        <h2>Erledigt <span id="doneCount"></span></h2>
+        <button class="link-btn" id="clearDoneBtn">Erledigte löschen</button>
+      </div>
+      <ul class="list done" id="doneList"></ul>
+    </section>
+  </main>
+
+  <footer class="foot">
+    Du bist <button class="link-btn" id="nameBtn"></button>
+  </footer>
+
+  <dialog id="nameDialog">
+    <form method="dialog" id="nameForm">
+      <h2>Wer bist du?</h2>
+      <p>Damit alle sehen, wer was eingetragen oder abgehakt hat.</p>
+      <input id="nameInput" type="text" placeholder="Dein Name" maxlength="20" required>
+      <button type="submit" class="primary">Los geht's</button>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
